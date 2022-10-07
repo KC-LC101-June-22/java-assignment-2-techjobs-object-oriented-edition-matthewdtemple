@@ -17,6 +17,9 @@ public class Job {
         id = nextId;
         nextId ++;
     }
+    // TODO: Add two constructors - one to initialize a unique ID and a second to initialize the
+    //  other five fields. The second constructor should also call the first in order to initialize
+    //  the 'id' field.
 
     public Job(String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency){
         this();
@@ -26,10 +29,10 @@ public class Job {
         this.positionType = positionType;
         this.coreCompetency = coreCompetency;
     }
-
-    // TODO: Add two constructors - one to initialize a unique ID and a second to initialize the
-    //  other five fields. The second constructor should also call the first in order to initialize
-    //  the 'id' field.
+@Override
+    public String toString() {
+        return "\n" ;
+    }
 
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
     //  match.
