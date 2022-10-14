@@ -48,7 +48,41 @@ public class JobTest {
     @Test
     public void testToStringStartsAndEndsWithNewLine(){
         Job jobTest = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-       String testChar = String.valueOf(jobTest.toString().charAt(0));
-        assertEquals(true, testChar == "\n");
+        String testChar = String.valueOf(jobTest.toString().charAt(0));
+        String testCharLast = String.valueOf(jobTest.toString().charAt(jobTest.toString().length() -1));
+        assertEquals("\n", testChar);
+        assertEquals("\n", testCharLast);
+//        assertEquals("\n", jobTest.toString().charAt(jobTest.toString().length() -1));
     }
+
+    @Test
+    public void testToStringContainsCorrectLabelsAndData(){
+        Job jobTest = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        String jobStringFormat =
+                "\n" +
+                "ID: " + jobTest.getId() + "\n" +
+                "Name: Product tester\n" +
+                "Employer: ACME\n" +
+                "Location: Desert\n" +
+                "Position Type: Quality control\n" +
+                "Core Competency: Persistence\n";
+        assertEquals(jobStringFormat, jobTest.toString());
+    }
+
+    @Test
+    public void testToStringHandlesEmptyField(){
+        Job jobTest = new Job("", new Employer(""), new Location(""), new PositionType(""), new CoreCompetency(""));
+        // is there a format button to line everything up??????
+        String jobNoData =
+                        "\n" +
+        // After abstract class, each argument in Job increments ID???
+                        "ID: " + jobTest.getId() + "\n" +
+                        "Name: Data not available\n" +
+                        "Employer: Data not available\n" +
+                        "Location: Data not available\n" +
+                        "Position Type: Data not available\n" +
+                        "Core Competency: Data not available\n";
+        assertEquals(jobNoData, jobTest.toString());
+    }
+
 }

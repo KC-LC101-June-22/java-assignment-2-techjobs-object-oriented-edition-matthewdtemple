@@ -1,5 +1,6 @@
 package org.launchcode.techjobs.oo;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Job {
@@ -29,10 +30,80 @@ public class Job {
         this.positionType = positionType;
         this.coreCompetency = coreCompetency;
     }
-@Override
+
+//    public static void main(String[] args){
+//        Job jobTest = new Job("Product tester", new Employer(""), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+//
+//        String jobEmployer;
+//        if (jobTest.employer.getValue() == ""){
+//            jobEmployer = "NOT AVA";
+//        } else {
+//            jobEmployer = jobTest.employer.getValue();
+//        }
+//        System.out.println(jobEmployer);
+
+//    }
     public String toString() {
-        return "\n" ;
+
+        String nA = "Data not available";
+
+
+        //These should compare if the value is null, but I cant figure out a null constructor without errors
+        String jobName;
+        if (this.name == "") {
+            jobName = nA;
+        } else {
+            jobName = this.getName();
+        }
+
+        String jobEmployer;
+        if (this.employer.getValue() == ""){
+            jobEmployer = nA;
+        } else {
+            jobEmployer = this.employer.getValue();
+        }
+
+        String jobLocation;
+        if (this.location.getValue() == ""){
+            jobLocation = nA;
+        } else {
+            jobLocation = this.location.getValue();
+        }
+
+        String jobPosition;
+        if (this.positionType.getValue() == ""){
+            jobPosition = nA;
+        } else {
+            jobPosition = this.positionType.getValue();
+        }
+
+        String jobCompetency;
+        if (this.coreCompetency.getValue() == ""){
+            jobCompetency = nA;
+        } else {
+            jobCompetency = this.coreCompetency.getValue();
+        }
+
+
+
+
+        String jobInfo =
+                "\n" +
+                "ID: " + this.getId() + "\n" +
+                "Name: " + jobName + "\n" +
+                "Employer: " + jobEmployer + "\n" +
+                "Location: " + jobLocation + "\n" +
+                "Position Type: " + jobPosition + "\n" +
+                "Core Competency: " + jobCompetency + "\n";
+        return jobInfo;
     }
+
+//    ID:  _______
+//    Name: _______
+//    Employer: _______
+//    Location: _______
+//    Position Type: _______
+//    Core Competency: _______
 
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
     //  match.
